@@ -1,3 +1,13 @@
-input{
-    background-color: bisque;
+input {
+  background-color: bisque;
+}
+
+.scroller-container {
+  height: 300px;
+  overflow-y: scroll;
+
+}
+
+.scroller-container::-webkit-scrollbar{
+    width:5px;
 }
