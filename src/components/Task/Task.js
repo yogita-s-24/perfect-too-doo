@@ -1,11 +1,11 @@
 import React from 'react'
 import "./Task.css"
 
-export const Task = () => {
+export default Task = () => {
   return (
     <>
     <div>
-        
+
     </div>
     </>
   )
