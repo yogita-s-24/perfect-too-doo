@@ -1,0 +1,21 @@
+.card-container{
+    position: relative;
+}
+
+.edit-delete-task{
+    position: absolute;
+   bottom:6px;
+   right: 4px;
+   font-size: 13px;
+   
+}
+
+.delete {
+    border: 1px solid black;
+    cursor: pointer;
+}
+.edit {
+    border: 1px solid black;
+    cursor: pointer;
+
+}

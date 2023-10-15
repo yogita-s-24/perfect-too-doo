@@ -25,12 +25,20 @@ const addTaskIntoList = () =>{
     priority : priority
   }
   setTaskList([...taskList,obj]);
-  
+
   setTitle('');
   setDescription('');
   setPriority('');
 }
 
+//delete task from list using obj
+const deleteTask = (obj) =>{
+ const index = taskList.indexOf(obj) //find the index of the task to be deleted
+ const tempArray = taskList; //create a referance to the original array
+ tempArray.splice(index,1); //remove the task from tempArray
+ setTaskList([...tempArray]); // Update state with the tempArray
+  
+}
 
   return (
     <>
@@ -56,6 +64,8 @@ const addTaskIntoList = () =>{
                       title={title}
                       description={description}
                       priority={priority}
+                      deleteTask={deleteTask}
+                      object={taskItem}
                     />
                   );
                 })}
