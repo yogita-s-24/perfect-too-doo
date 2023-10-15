@@ -15,6 +15,23 @@ function Home() {
  
   ]);
 
+  // This Arrow function for add Task In the List
+const addTaskIntoList = () =>{
+  const randomId = Math.floor(Math.random() * 1000);
+  const obj ={
+    id : randomId ,
+    title : title,
+    description : description,
+    priority : priority
+  }
+  setTaskList([...taskList,obj]);
+  
+  setTitle('');
+  setDescription('');
+  setPriority('');
+}
+
+
   return (
     <>
       <div className="container">
@@ -89,8 +106,8 @@ function Home() {
                         console.log(e.target.value);
                       }}
                     />
-                    <button className=" btn btn-dark px-5 d-block mt-5 mx-auto">
-                      Add
+                    <button className=" btn btn-dark px-5 d-block mt-5 mx-auto" type="button" onClick={addTaskIntoList}>
+                      Add 
                     </button>
                   </div>
                 </form>
