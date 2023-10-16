@@ -32,12 +32,33 @@ const addTaskIntoList = () =>{
 }
 
 //delete task from list using obj
-const deleteTask = (obj) =>{
- const index = taskList.indexOf(obj) //find the index of the task to be deleted
- const tempArray = taskList; //create a referance to the original array
- tempArray.splice(index,1); //remove the task from tempArray
- setTaskList([...tempArray]); // Update state with the tempArray
+// const deleteTask = (obj) =>{
+//  const index = taskList.indexOf(obj) //find the index of the task to be deleted
+//  const tempArray = taskList; //create a referance to the original array
+//  tempArray.splice(index,1); //remove the task from tempArray
+//  setTaskList([...tempArray]); // Update state with the tempArray
   
+// }
+
+
+//delete task from list using id
+const deleteTask = (id) => {
+  let index; // Declare a variable to store the index of the task to be deleted
+  
+  // Loop through the taskList to find the index of the task with the matching id
+  taskList.forEach((task, i) => {
+    if (task.id === id) {
+      index = i; // Set the 'index' variable to the index of the task to be deleted
+    }
+  });
+
+  const tempArray = taskList; // Create a reference to the original 'taskList' array
+
+  // Remove the task from the 'tempArray' using the 'splice' method
+  tempArray.splice(index, 1);
+
+  // Update the state with a new array created by spreading the 'tempArray'
+  setTaskList([...tempArray]);
 }
 
   return (
@@ -57,7 +78,7 @@ const deleteTask = (obj) =>{
               }}>
               <div className="card-body scroller-container">
                 {taskList.map((taskItem, i) => {
-                  const { title, description, priority } = taskItem;
+                  const { title, description, priority,id } = taskItem;
                   return (
                     <Task
                       key={i}
@@ -65,7 +86,8 @@ const deleteTask = (obj) =>{
                       description={description}
                       priority={priority}
                       deleteTask={deleteTask}
-                      object={taskItem}
+                      // object={taskItem}
+                      id={id}
                     />
                   );
                 })}

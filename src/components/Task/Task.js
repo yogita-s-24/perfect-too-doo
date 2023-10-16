@@ -1,7 +1,7 @@
 import React from "react";
 import "./Task.css";
 
-function Task({ title, description, priority,deleteTask,obj}) {
+function Task({ title, description, priority,deleteTask,id}) {
   return (
     <>
       <div className="card mt-2 shadow">
@@ -19,7 +19,7 @@ function Task({ title, description, priority,deleteTask,obj}) {
           </p>
 
 <div className="edit-delete-task">
-          <span className="bg-light shadow p-1  delete" style={{borderRadius:"50px"}} onClick={()=>{deleteTask(obj)}}>🗑️</span>
+          <span className="bg-light shadow p-1  delete" style={{borderRadius:"50px"}} onClick={()=>{deleteTask(id)}}>🗑️</span>
           <span className="bg-light shadow p-1  edit ms-1" style={{borderRadius:"50px"}}>✏️</span>
 </div>
 
