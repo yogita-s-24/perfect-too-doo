@@ -12,24 +12,39 @@ function Home() {
       description: "Perfect all Concepts of TODOAPP",
       priority: "High",
     }
- 
   ]);
 
-  // This Arrow function for add Task In the List
-const addTaskIntoList = () =>{
-  const randomId = Math.floor(Math.random() * 1000);
-  const obj ={
-    id : randomId ,
-    title : title,
-    description : description,
-    priority : priority
-  }
-  setTaskList([...taskList,obj]);
 
-  setTitle('');
-  setDescription('');
-  setPriority('');
-}
+  // This Arrow function for add Task In the List
+  const addTaskIntoList = () => {
+    // Generate a random ID for the new task
+    const randomId = Math.floor(Math.random() * 1000);
+  
+    // Create an object to represent the new task
+    const obj = {
+      id: randomId,
+      title: title,          // Assuming 'title' is defined elsewhere in your code
+      description: description, // Assuming 'description' is defined elsewhere in your code
+      priority: priority      // Assuming 'priority' is defined elsewhere in your code
+    }
+  
+    
+    // Create a new array ('newTaskList') that includes the new task object
+    const newTaskList = [...taskList, obj];
+    
+    // Update state with the new list of tasks
+    setTaskList(newTaskList);
+  
+    // Clear the input fields or reset the corresponding state variables
+    setTitle('');          // Assuming 'setTitle' is used to update the title state
+    setDescription('');     // Assuming 'setDescription' is used to update the description state
+    setPriority('');       // Assuming 'setPriority' is used to update the priority state
+  
+    // Optionally, save the updated task list to local storage
+    saveToLocalStorage(newTaskList);
+  }
+  
+
 
 //delete task from list using obj
 // const deleteTask = (obj) =>{
@@ -39,7 +54,6 @@ const addTaskIntoList = () =>{
 //  setTaskList([...tempArray]); // Update state with the tempArray
   
 // }
-
 
 //delete task from list using id
 const deleteTask = (id) => {
@@ -61,6 +75,12 @@ const deleteTask = (id) => {
   setTaskList([...tempArray]);
 }
 
+
+//Task Save to Local Storage
+const saveToLocalStorage = (()=>{
+  localStorage.setItem('perfect',JSON.stringify(taskList));
+})
+
   return (
     <>
       <div className="container">
@@ -78,7 +98,7 @@ const deleteTask = (id) => {
               }}>
               <div className="card-body scroller-container">
                 {taskList.map((taskItem, i) => {
-                  const { title, description, priority,id } = taskItem;
+                  const { title, description, priority, id} = taskItem;
                   return (
                     <Task
                       key={i}
