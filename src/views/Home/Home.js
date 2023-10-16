@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Task from "./../../components/Task/Task";
 
@@ -31,7 +31,7 @@ function Home() {
     
     // Create a new array ('newTaskList') that includes the new task object
     const newTaskList = [...taskList, obj];
-    
+
     // Update state with the new list of tasks
     setTaskList(newTaskList);
   
@@ -80,6 +80,13 @@ const deleteTask = (id) => {
 const saveToLocalStorage = (()=>{
   localStorage.setItem('perfect',JSON.stringify(taskList));
 })
+
+
+//load task from local storage
+useEffect(() => {
+ const list = JSON.parse(localStorage.getItem('perfect'));
+  setTaskList(list);
+}, []);
 
   return (
     <>
