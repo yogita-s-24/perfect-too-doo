@@ -6,6 +6,7 @@ function Home() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("");
+  
   const [taskList, setTaskList] = useState([
     {
       title: "To Do App",
@@ -73,6 +74,9 @@ const deleteTask = (id) => {
 
   // Update the state with a new array created by spreading the 'tempArray'
   setTaskList([...tempArray]);
+
+
+  saveToLocalStorage(tempArray); //Call the 'saveToLocalStorage()' function with 'tempArray' to updated task to delete from the Local Storage.
 }
 
 
@@ -87,6 +91,8 @@ useEffect(() => {
  const list = JSON.parse(localStorage.getItem('perfect'));
   setTaskList(list);
 }, []);
+
+
 
   return (
     <>
